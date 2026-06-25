@@ -234,3 +234,35 @@ body {
     }
   }
 }
+
+@media (pointer: coarse) {
+  :root {
+    --left: 63vw;
+    --right: calc(100vw - var(--left));
+  }
+
+  html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+		padding: 40px;
+		box-sizing: border-box;
+    background-color: rgb(20, 20, 20);
+    &::after {
+      content: "Не доступно в мобильной версии :[";
+      color: var(--RGB-regular);
+      font-size: 3vh;
+      font-family: var(--TXT-family-extra) !important;
+			text-align: center;
+			padding-bottom: 50vh;
+			box-sizing: border-box;
+    }
+  }
+  body {
+    display: none !important;
+  }
+}

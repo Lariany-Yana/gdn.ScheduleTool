@@ -254,9 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSlots = parseFloat(valueNode.textContent) || 1;
 
     if (target.classList.contains("increment")) {
-      currentSlots += 0.5;
+      currentSlots += 0.25;
     } else if (target.classList.contains("decrement")) {
-      currentSlots = Math.max(0.5, currentSlots - 0.5); 
+      currentSlots = Math.max(0.25, currentSlots - 0.25); 
     }
 
     valueNode.textContent = currentSlots;
