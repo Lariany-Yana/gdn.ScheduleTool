@@ -1,0 +1,193 @@
+:root {
+  --left: 63vw;
+  --right: calc(100vw - var(--left));
+}
+
+html {
+  overflow: hidden;
+}
+body {
+  width: var(--left) !important;
+  top: 0;
+  left: 0;
+}
+.card-section {
+  width: var(--left) !important;
+}
+
+.Tool {
+  position: absolute;
+  top: 0;
+  left: var(--left);
+  width: var(--right);
+  height: 100%;
+  background-color: var(--RGB-background);
+  padding: var(--PDNG-general);
+  box-sizing: border-box;
+  border: var(--BDR-size) solid var(--WIN-border-color);
+  overflow: hidden;
+  overflow-y: scroll;
+  * {
+    justify-self: center;
+  }
+  .copy-schedule {
+		pointer-events: none;
+    width: 100%;
+    background-color: var(--RGB-accent);
+    border-radius: 10px;
+    opacity: 0.2;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    padding: var(--PDNG-button);
+    transition: opacity var(--UI-transition-extra) ease-in-out;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+  .week {
+		pointer-events: none;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 20px;
+
+    .back,
+    .next {
+      padding: var(--PDNG-button);
+      flex: 1;
+      background-color: var(--RGB-regular);
+      border-radius: 10px;
+      opacity: 0.2;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      color: black;
+      transition: opacity var(--UI-transition-extra) ease;
+    }
+    .back:hover,
+    .next:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  .container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    * {
+      max-width: var(--right);
+    }
+    .card-section-name {
+      margin: unset !important;
+      width: 100% !important;
+    }
+    .card-section {
+      all: unset;
+      width: 100% !important;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .drop-zone {
+      min-height: 40px;
+      padding: 20px;
+      &::after {
+        content: "+";
+        color: white;
+        text-align: center;
+      }
+    }
+    .drag-over {
+      background-color: var(--CARD-color);
+      border-radius: var(--BDR-radius-extra);
+      .tool-card {
+        pointer-events: none;
+        border: 2px black solid;
+      }
+    }
+
+    .tool-card {
+      background-color: var(--CARD-color);
+      width: 100%;
+      min-height: 40px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: var(--BDR-radius-main);
+      border: 2px transparent solid;
+      gap: 10px;
+      .specs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        gap: 10px;
+
+        .time,
+        .slot {
+          flex: 1;
+          padding: var(--PDNG-button);
+          border-radius: var(--BDR-radius-extra);
+          border: 2px black solid;
+          color: white;
+        }
+        .time::before {
+          content: "Начало в ";
+        }
+        .slot::before {
+          content: "Слотов: ";
+        }
+
+        .name {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+        }
+      }
+      .remove {
+        margin-top: 10px;
+        color: red;
+        font-size: 14px;
+        text-transform: uppercase;
+        opacity: 0.2;
+        align-self: center;
+        transition: opacity calc(var(--UI-transition-extra) / 2) ease;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.order-card {
+  .order-content .name-ru {
+    pointer-events: none;
+  }
+  .add-favorite {
+    display: none !important;
+  }
+}

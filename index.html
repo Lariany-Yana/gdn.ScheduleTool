@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule Tool</title>
+
+    <link rel="stylesheet" href="https://lariany-yana.github.io/gdn.ScheduleTool/style.css" />
+    <link rel="stylesheet" href="https://lariany-yana.github.io/gdn.Website/style.css" />
+  </head>
+  <body>
+    <script>
+      const html = document.documentElement;
+
+      let currentTheme = localStorage.getItem("theme") || "dark";
+
+      function applyTheme(theme) {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        currentTheme = "dark";
+      }
+
+      applyTheme(currentTheme);
+
+      function toggleTheme(targetTheme) {
+        if (targetTheme) {
+          applyTheme(targetTheme);
+        }
+      }
+    </script>
+    <nav class="search-header">
+      <input type="text" id="searchInput" placeholder="Поиск по заказам" maxlength="15" />
+    </nav>
+
+    <template id="content-search">
+      <button class="popup-exit"></button>
+      <div class="results-container"></div>
+    </template>
+
+    <template id="popup-base-template">
+      <div class="popup-overlay">
+        <article class="popup"></article>
+      </div>
+    </template>
+
+    <div class="tabs">
+      <div class="tabs-container">
+        <div class="tabs-section">
+          <button class="tab-button change-section" data-type="order-during">В процессе</button>
+          <button class="tab-button change-section active" data-type="order-waiting">В очереди</button>
+        </div>
+        <div class="tabs-section">
+          <button class="tab-button change-section" data-type="order-incomplete">Нужен дозаказ</button>
+          <button class="tab-button change-section" data-type="order-frozen">На паузе</button>
+        </div>
+        <div class="tabs-section">
+          <button class="tab-button change-section" data-type="order-switch">Свапы</button>
+          <button class="tab-button change-section" data-type="order-finished">Просмотренное</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="orders">
+      <p class="retain">Это инструмент для составления расписания из заказов Годня.</p>
+      <h1 class="retain RGB-accent" id="updateWas"></h1>
+    </div>
+
+    <template id="order-card-template">
+      <article class="order-card">
+        <div class="order-content">
+          <span class="name-ru"></span>
+          <span class="name-en"></span>
+          <div class="order-info"></div>
+        </div>
+        <button class="add-favorite"></button>
+        <div class="order-slots"></div>
+      </article>
+    </template>
+
+    <template id="slot-row-template">
+      <div class="slot-row">
+        <span class="slot-info date"></span>
+        <span class="slot-info count"></span>
+        <span class="slot-info nickname"></span>
+      </div>
+    </template>
+
+    <template id="order-switch-template">
+      <article class="order-card">
+        <div class="order-content from">
+          <span class="name-ru"></span>
+          <span class="name-en"></span>
+          <div class="order-info"></div>
+        </div>
+        <div class="order-content to">
+          <span class="name-ru"></span>
+          <span class="name-en"></span>
+          <div class="order-info"></div>
+        </div>
+      </article>
+    </template>
+
+    <div class="Tool">
+      <div class="copy-schedule">Скопировать готовое расписание</div>
+      <div class="week">
+        <div class="back">← Предыдущая неделя</div>
+        <div class="next">Следующая неделя →</div>
+      </div>
+      <div class="container"></div>
+    </div>
+
+    <template id="tool-card-template">
+      <article class="tool-card">
+        <div class="name">
+          <span class="name-ru"></span>
+          <span class="name-en"></span>
+        </div>
+        <div class="specs">
+          <div class="time"></div>
+          <div class="slot"></div>
+        </div>
+        <div class="remove">Убрать</div>
+      </article>
+    </template>
+
+    <!-- BD -->
+    <script src="https://lariany-yana.github.io/gdn.Website/BD2/Orders.js"></script>
+    <!-- Ядро -->
+    <script src="https://lariany-yana.github.io/gdn.Website/JS/core.js"></script>
+    <!-- Модуль -->
+    <script src="https://lariany-yana.github.io/gdn.Website/JS/orders-module.js"></script>
+    <!-- dlc -->
+    <script src="https://lariany-yana.github.io/gdn.ScheduleTool/script.js"></script>
+  </body>
+</html>
