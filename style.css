@@ -120,9 +120,11 @@ body {
       width: 100%;
       box-sizing: border-box;
       .tool-card:not(:first-child) {
-        .increment,
-        .decrement {
-          display: none !important;
+        .time {
+          .increment,
+          .decrement {
+            display: none !important;
+          }
         }
       }
     }
@@ -249,17 +251,17 @@ body {
     overflow: hidden;
     height: 100%;
     width: 100%;
-		padding: 40px;
-		box-sizing: border-box;
+    padding: 40px;
+    box-sizing: border-box;
     background-color: rgb(20, 20, 20);
     &::after {
       content: "Не доступно в мобильной версии :[";
       color: var(--RGB-regular);
       font-size: 3vh;
       font-family: var(--TXT-family-extra) !important;
-			text-align: center;
-			padding-bottom: 50vh;
-			box-sizing: border-box;
+      text-align: center;
+      padding-bottom: 50vh;
+      box-sizing: border-box;
     }
   }
   body {
