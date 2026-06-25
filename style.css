@@ -14,6 +14,24 @@ body {
 .card-section {
   width: var(--left) !important;
 }
+.window {
+  height: calc(100vh - var(--UI-letterbox));
+  &::before {
+    height: calc(100vh - var(--UI-letterbox));
+  }
+}
+.tabs {
+  bottom: 0;
+}
+
+.order-card {
+  .order-content .name-ru {
+    pointer-events: none;
+  }
+  .add-favorite {
+    display: none !important;
+  }
+}
 
 .Tool {
   position: absolute;
@@ -24,14 +42,13 @@ body {
   background-color: var(--RGB-background);
   padding: var(--PDNG-general);
   box-sizing: border-box;
-  border: var(--BDR-size) solid var(--WIN-border-color);
+  border-left: var(--BDR-size) solid var(--WIN-border-color);
   overflow: hidden;
   overflow-y: scroll;
   * {
     justify-self: center;
   }
   .copy-schedule {
-		pointer-events: none;
     width: 100%;
     background-color: var(--RGB-accent);
     border-radius: 10px;
@@ -48,7 +65,6 @@ body {
     }
   }
   .week {
-		pointer-events: none;
     display: flex;
     margin-top: 20px;
     flex-direction: row;
@@ -145,27 +161,53 @@ body {
 
         .time,
         .slot {
+          overflow: hidden;
+          position: relative;
           flex: 1;
           padding: var(--PDNG-button);
           border-radius: var(--BDR-radius-extra);
           border: 2px black solid;
           color: white;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          .increment,
+          .decrement {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            aspect-ratio: 1/1;
+            position: absolute;
+            cursor: pointer;
+            font-size: 20px;
+            transition: color var(--UI-transition-extra) ease;
+            &:hover {
+              color: var(--RGB-accent);
+            }
+          }
+          .increment {
+            right: 0;
+            top: 0;
+          }
+          .decrement {
+            left: 0;
+            top: 0;
+          }
         }
-        .time::before {
-          content: "Начало в ";
-        }
-        .slot::before {
-          content: "Слотов: ";
-        }
-
-        .name {
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          width: 100%;
-        }
+				.time .value::before {content: "Начало в ";}
+				.slot .value::before {content: "Слотов: ";}
       }
+      .name {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+      }
+
       .remove {
         margin-top: 10px;
         color: red;
@@ -180,14 +222,5 @@ body {
         }
       }
     }
-  }
-}
-
-.order-card {
-  .order-content .name-ru {
-    pointer-events: none;
-  }
-  .add-favorite {
-    display: none !important;
   }
 }
