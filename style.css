@@ -119,6 +119,12 @@ body {
       justify-content: center;
       width: 100%;
       box-sizing: border-box;
+      .tool-card:not(:first-child) {
+        .increment,
+        .decrement {
+          display: none !important;
+        }
+      }
     }
     .drop-zone {
       min-height: 40px;
@@ -196,8 +202,12 @@ body {
             top: 0;
           }
         }
-				.time .value::before {content: "Начало в ";}
-				.slot .value::before {content: "Слотов: ";}
+        .time .value::before {
+          content: "Начало в ";
+        }
+        .slot .value::before {
+          content: "Слотов: ";
+        }
       }
       .name {
         text-align: center;
