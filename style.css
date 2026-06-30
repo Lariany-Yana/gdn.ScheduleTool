@@ -1,5 +1,5 @@
 :root {
-  --left: 63vw;
+  --left: 67vw;
   --right: calc(100vw - var(--left));
 }
 
